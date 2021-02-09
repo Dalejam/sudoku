@@ -1,0 +1,12 @@
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\bin\Debug\sudoku01.exe.config
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\bin\Debug\sudoku01.exe
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\bin\Debug\sudoku01.pdb
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.csprojAssemblyReference.cache
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.crearUsuario.resources
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.Form1.resources
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.Properties.Resources.resources
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.csproj.GenerateResource.cache
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.csproj.CoreCompileInputs.cache
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.exe
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.pdb
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.Partida.resources

@@ -46,8 +46,9 @@ namespace sudoku01
                     {
                         for (int columna = 0; columna < 9; columna++)
                         {
-                            dataTablero.Rows[fila].Cells[columna].Value = tablero[fila, columna];
+                            
                             tablero[fila, columna] = datos[posicion];
+                            dataTablero.Rows[fila].Cells[columna].Value = tablero[fila, columna];
                             posicion++;
                         }
                     }
@@ -55,6 +56,7 @@ namespace sudoku01
 
 
             }
+            leer.Close();
         }
 
         private void btSalir_Click(object sender, EventArgs e)

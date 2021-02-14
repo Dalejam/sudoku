@@ -40,29 +40,29 @@ namespace sudoku01
             // 
             // textNombre
             // 
-            this.textNombre.Location = new System.Drawing.Point(125, 76);
+            this.textNombre.Location = new System.Drawing.Point(63, 9);
             this.textNombre.Name = "textNombre";
-            this.textNombre.Size = new System.Drawing.Size(171, 20);
+            this.textNombre.Size = new System.Drawing.Size(154, 20);
             this.textNombre.TabIndex = 0;
             // 
             // textUsuario
             // 
-            this.textUsuario.Location = new System.Drawing.Point(125, 114);
+            this.textUsuario.Location = new System.Drawing.Point(63, 35);
             this.textUsuario.Name = "textUsuario";
-            this.textUsuario.Size = new System.Drawing.Size(171, 20);
+            this.textUsuario.Size = new System.Drawing.Size(154, 20);
             this.textUsuario.TabIndex = 1;
             // 
             // textClave
             // 
-            this.textClave.Location = new System.Drawing.Point(125, 150);
+            this.textClave.Location = new System.Drawing.Point(63, 61);
             this.textClave.Name = "textClave";
-            this.textClave.Size = new System.Drawing.Size(171, 20);
+            this.textClave.Size = new System.Drawing.Size(154, 20);
             this.textClave.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 76);
+            this.label1.Location = new System.Drawing.Point(1, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 3;
@@ -71,7 +71,7 @@ namespace sudoku01
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 121);
+            this.label2.Location = new System.Drawing.Point(1, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 4;
@@ -80,7 +80,7 @@ namespace sudoku01
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 157);
+            this.label3.Location = new System.Drawing.Point(4, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 5;
@@ -88,9 +88,9 @@ namespace sudoku01
             // 
             // btGuardar
             // 
-            this.btGuardar.Location = new System.Drawing.Point(125, 206);
+            this.btGuardar.Location = new System.Drawing.Point(21, 219);
             this.btGuardar.Name = "btGuardar";
-            this.btGuardar.Size = new System.Drawing.Size(124, 41);
+            this.btGuardar.Size = new System.Drawing.Size(113, 77);
             this.btGuardar.TabIndex = 6;
             this.btGuardar.Text = "GUARDAR";
             this.btGuardar.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@ namespace sudoku01
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 285);
+            this.ClientSize = new System.Drawing.Size(482, 316);
             this.Controls.Add(this.btGuardar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

@@ -57,11 +57,58 @@ namespace sudoku01
 
             }
             leer.Close();
+
+            string numeroIngresado = this.dataTablero.CurrentCell.Value.ToString();
+            int X, Y;
+            X = dataTablero.CurrentCellAddress.X;
+            Y = dataTablero.CurrentCellAddress.Y;
+            bool comparaFila, comparaColumna;
+            if (dataTablero.Rows[X].Cells.ToString().Contains(numeroIngresado))
+            {
+                comparaFila = true;
+            }
+            else
+            {
+                comparaFila = false;
+            }
+            if (dataTablero.Columns[Y].ToString().Contains(numeroIngresado))
+            {
+                comparaColumna = true;
+            }
+            else
+            {
+                comparaColumna = false;
+            }
+            if (comparaColumna == true || comparaFila == true)
+            {
+                dataTablero.CurrentCell.Style.BackColor = Color.Red;
+            }
+
+
         }
 
         private void btSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void btValidar_Click(object sender, EventArgs e)
+        {
+            string numeroIngresado = this.dataTablero.CurrentCell.Value.ToString();
+            int fila, columna;
+            fila =Convert.ToInt32( dataTablero.CurrentCellAddress.X);
+            columna = dataTablero.CurrentCellAddress.Y;
+            string infFila, infColumna;
+            char[] vectorFila = new char[9];
+            char[] vectorColumna = new char[9];
+            infFila = ;
+            infColumna = dataTablero.CurrentRow.Cells[columna].Value.ToString();
+            vectorFila = infFila.ToCharArray();
+
+            //MessageBox.Show("la fila tiene " + fila + "La Columna es: " + columna +"\n el dato que esta en la casilla es:" + numeroIngresado);
+            MessageBox.Show("el vector" + infFila);
+            
+        }
+
     }
 }

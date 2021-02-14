@@ -29,6 +29,7 @@ namespace sudoku01
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btValidar = new System.Windows.Forms.Button();
             this.btTerminar = new System.Windows.Forms.Button();
             this.btSalir = new System.Windows.Forms.Button();
@@ -40,16 +41,17 @@ namespace sudoku01
             // 
             // btValidar
             // 
-            this.btValidar.Location = new System.Drawing.Point(162, 371);
+            this.btValidar.Location = new System.Drawing.Point(161, 318);
             this.btValidar.Name = "btValidar";
             this.btValidar.Size = new System.Drawing.Size(133, 38);
             this.btValidar.TabIndex = 0;
             this.btValidar.Text = "VALIDAR";
             this.btValidar.UseVisualStyleBackColor = true;
+            this.btValidar.Click += new System.EventHandler(this.btValidar_Click);
             // 
             // btTerminar
             // 
-            this.btTerminar.Location = new System.Drawing.Point(162, 317);
+            this.btTerminar.Location = new System.Drawing.Point(316, 317);
             this.btTerminar.Name = "btTerminar";
             this.btTerminar.Size = new System.Drawing.Size(133, 39);
             this.btTerminar.TabIndex = 1;
@@ -58,7 +60,7 @@ namespace sudoku01
             // 
             // btSalir
             // 
-            this.btSalir.Location = new System.Drawing.Point(316, 317);
+            this.btSalir.Location = new System.Drawing.Point(161, 370);
             this.btSalir.Name = "btSalir";
             this.btSalir.Size = new System.Drawing.Size(133, 39);
             this.btSalir.TabIndex = 2;
@@ -77,13 +79,29 @@ namespace sudoku01
             // 
             // dataTablero
             // 
+            this.dataTablero.AllowUserToAddRows = false;
+            this.dataTablero.AllowUserToDeleteRows = false;
+            this.dataTablero.AllowUserToResizeColumns = false;
+            this.dataTablero.AllowUserToResizeRows = false;
             this.dataTablero.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataTablero.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataTablero.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataTablero.ColumnHeadersVisible = false;
+            this.dataTablero.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+            this.dataTablero.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataTablero.Location = new System.Drawing.Point(38, 42);
             this.dataTablero.Name = "dataTablero";
             this.dataTablero.RowHeadersVisible = false;
-            this.dataTablero.Size = new System.Drawing.Size(411, 208);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataTablero.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataTablero.ShowEditingIcon = false;
+            this.dataTablero.ShowRowErrors = false;
+            this.dataTablero.Size = new System.Drawing.Size(396, 204);
             this.dataTablero.TabIndex = 4;
             // 
             // btIniciar
@@ -100,7 +118,7 @@ namespace sudoku01
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(512, 460);
+            this.ClientSize = new System.Drawing.Size(488, 441);
             this.Controls.Add(this.btIniciar);
             this.Controls.Add(this.dataTablero);
             this.Controls.Add(this.btEstadistica);

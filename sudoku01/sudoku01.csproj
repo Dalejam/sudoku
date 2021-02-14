@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\JugarPartida.cs" />
     <Compile Include="clases\Usuario.cs" />
     <Compile Include="crearUsuario.cs">
       <SubType>Form</SubType>

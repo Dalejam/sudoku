@@ -76,6 +76,7 @@ namespace sudoku01
             this.btEstadistica.TabIndex = 3;
             this.btEstadistica.Text = "ESTADISTICA";
             this.btEstadistica.UseVisualStyleBackColor = true;
+            this.btEstadistica.Click += new System.EventHandler(this.btEstadistica_Click);
             // 
             // dataTablero
             // 

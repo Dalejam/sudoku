@@ -24,13 +24,7 @@ namespace sudoku01
             tablero = new string[9, 9];
             dataTablero.ColumnCount = 9;
             dataTablero.RowCount = 9;
-           /* for(int fila = 0; fila<9; fila++)
-            {
-                for(int columna= 0; columna < 9; columna++)
-                {
-                    dataTablero.Rows[fila].Cells[columna].Value = tablero[fila, columna];
-                }
-            }*/
+           
             string validacion = "datos.txt";
             StreamReader leer = File.OpenText(validacion);
             while (!leer.EndOfStream)
@@ -40,6 +34,7 @@ namespace sudoku01
                 string[] linea = File.ReadAllLines(validacion);
                 int calin = linea.Length;
                 int posicion = 0;
+                int espacio=0;
                 while (posicion < 81)
                 {
                     for (int fila = 0; fila < 9; fila++)
@@ -47,9 +42,22 @@ namespace sudoku01
                         for (int columna = 0; columna < 9; columna++)
                         {
                             
-                            tablero[fila, columna] = datos[posicion];
-                            dataTablero.Rows[fila].Cells[columna].Value = tablero[fila, columna];
-                            posicion++;
+                            if (espacio>=5)
+                            {
+                                tablero[fila, columna] = datos[posicion];
+                                dataTablero.Rows[fila].Cells[columna].Value = tablero[fila, columna];
+                                posicion++;
+                                espacio--;
+                            }
+                            else
+                            {
+                                tablero[fila, columna] = "";
+                                dataTablero.Rows[fila].Cells[columna].Value = tablero[fila, columna];
+                                posicion++;
+                                espacio++;
+
+                            }
+                            
                         }
                     }
                 }
@@ -58,31 +66,7 @@ namespace sudoku01
             }
             leer.Close();
 
-            string numeroIngresado = this.dataTablero.CurrentCell.Value.ToString();
-            int X, Y;
-            X = dataTablero.CurrentCellAddress.X;
-            Y = dataTablero.CurrentCellAddress.Y;
-            bool comparaFila, comparaColumna;
-            if (dataTablero.Rows[X].Cells.ToString().Contains(numeroIngresado))
-            {
-                comparaFila = true;
-            }
-            else
-            {
-                comparaFila = false;
-            }
-            if (dataTablero.Columns[Y].ToString().Contains(numeroIngresado))
-            {
-                comparaColumna = true;
-            }
-            else
-            {
-                comparaColumna = false;
-            }
-            if (comparaColumna == true || comparaFila == true)
-            {
-                dataTablero.CurrentCell.Style.BackColor = Color.Red;
-            }
+            
 
 
         }
@@ -96,19 +80,77 @@ namespace sudoku01
         {
             string numeroIngresado = this.dataTablero.CurrentCell.Value.ToString();
             int fila, columna;
-            fila =Convert.ToInt32( dataTablero.CurrentCellAddress.X);
-            columna = dataTablero.CurrentCellAddress.Y;
+            fila =Convert.ToInt32(dataTablero.CurrentCellAddress.Y );
+            columna = dataTablero.CurrentCellAddress.X;
             string infFila, infColumna;
             char[] vectorFila = new char[9];
             char[] vectorColumna = new char[9];
-            infFila = ;
-            infColumna = dataTablero.CurrentRow.Cells[columna].Value.ToString();
-            vectorFila = infFila.ToCharArray();
-
-            //MessageBox.Show("la fila tiene " + fila + "La Columna es: " + columna +"\n el dato que esta en la casilla es:" + numeroIngresado);
-            MessageBox.Show("el vector" + infFila);
+            infFila = valoresFila(columna);
+            infColumna = valoresColumna(columna);
             
         }
 
+        private string valoresFila(int numeroFila)
+        {
+            string datos = "";
+            for (int i = 0; i < 9; i++)
+            {
+                datos = datos + tablero[numeroFila, i];
+
+            }
+            return datos;
+        }
+        private string valoresColumna(int numeroColumna)
+        {
+            string datos = "";
+            for (int i = 0; i < 9; i++)
+            {
+                datos = datos + tablero[i, numeroColumna];
+            }
+            return datos;
+        }
+        private int aleatorio()
+        {
+            int numero;
+            Random random = new Random();
+            numero = random.Next(1, 2);
+            return numero;
+
+        }
+
+        private void btEstadistica_Click(object sender, EventArgs e)
+        {
+            Estadistica abrir = new Estadistica();
+            abrir.Show();
+
+            tablero = new string[9, 9];
+            abrir.dataEstadistica.ColumnCount = 9;
+            abrir.dataEstadistica.RowCount = 9;
+
+            string validacion = "datos.txt";
+            StreamReader leer = File.OpenText(validacion);
+            string Lactual = leer.ReadLine();
+            string[] datos = Lactual.Split(',');
+            string[] linea = File.ReadAllLines(validacion);
+            int calin = linea.Length;
+            int posicion = 0;
+            int espacio = 0;
+            while (posicion < 81)
+            {
+                for (int fila = 0; fila < 9; fila++)
+                {
+                    for (int columna = 0; columna < 9; columna++)
+                    {
+
+                        tablero[fila, columna] = datos[posicion];
+                        abrir.dataEstadistica.Rows[fila].Cells[columna].Value = tablero[fila, columna];
+                        posicion++;
+
+                    }
+                }
+            }
+
+
+        }
     }
 }

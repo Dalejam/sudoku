@@ -10,3 +10,4 @@ C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.csproj.Core
 C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.exe
 C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.pdb
 C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.Partida.resources
+C:\Users\Alejandra\source\repos\sudoku01\sudoku01\obj\Debug\sudoku01.Estadistica.resources

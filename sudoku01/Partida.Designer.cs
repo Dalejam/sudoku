@@ -31,11 +31,13 @@ namespace sudoku01
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btValidar = new System.Windows.Forms.Button();
-            this.btTerminar = new System.Windows.Forms.Button();
             this.btSalir = new System.Windows.Forms.Button();
             this.btEstadistica = new System.Windows.Forms.Button();
             this.dataTablero = new System.Windows.Forms.DataGridView();
             this.btIniciar = new System.Windows.Forms.Button();
+            this.lbUsuario = new System.Windows.Forms.Label();
+            this.lbNivel = new System.Windows.Forms.Label();
+            this.lbPuntaje = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataTablero)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,15 +50,6 @@ namespace sudoku01
             this.btValidar.Text = "VALIDAR";
             this.btValidar.UseVisualStyleBackColor = true;
             this.btValidar.Click += new System.EventHandler(this.btValidar_Click);
-            // 
-            // btTerminar
-            // 
-            this.btTerminar.Location = new System.Drawing.Point(316, 317);
-            this.btTerminar.Name = "btTerminar";
-            this.btTerminar.Size = new System.Drawing.Size(133, 39);
-            this.btTerminar.TabIndex = 1;
-            this.btTerminar.Text = "TERMINAR";
-            this.btTerminar.UseVisualStyleBackColor = true;
             // 
             // btSalir
             // 
@@ -115,31 +108,63 @@ namespace sudoku01
             this.btIniciar.UseVisualStyleBackColor = true;
             this.btIniciar.Click += new System.EventHandler(this.btIniciar_Click);
             // 
+            // lbUsuario
+            // 
+            this.lbUsuario.AutoSize = true;
+            this.lbUsuario.Location = new System.Drawing.Point(191, 9);
+            this.lbUsuario.Name = "lbUsuario";
+            this.lbUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lbUsuario.TabIndex = 6;
+            this.lbUsuario.Text = "label1";
+            // 
+            // lbNivel
+            // 
+            this.lbNivel.AutoSize = true;
+            this.lbNivel.Location = new System.Drawing.Point(25, 286);
+            this.lbNivel.Name = "lbNivel";
+            this.lbNivel.Size = new System.Drawing.Size(53, 13);
+            this.lbNivel.TabIndex = 7;
+            this.lbNivel.Text = "labelNivel";
+            // 
+            // lbPuntaje
+            // 
+            this.lbPuntaje.AutoSize = true;
+            this.lbPuntaje.Location = new System.Drawing.Point(338, 286);
+            this.lbPuntaje.Name = "lbPuntaje";
+            this.lbPuntaje.Size = new System.Drawing.Size(65, 13);
+            this.lbPuntaje.TabIndex = 8;
+            this.lbPuntaje.Text = "labelPuntaje";
+            // 
             // Partida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 441);
+            this.Controls.Add(this.lbPuntaje);
+            this.Controls.Add(this.lbNivel);
+            this.Controls.Add(this.lbUsuario);
             this.Controls.Add(this.btIniciar);
             this.Controls.Add(this.dataTablero);
             this.Controls.Add(this.btEstadistica);
             this.Controls.Add(this.btSalir);
-            this.Controls.Add(this.btTerminar);
             this.Controls.Add(this.btValidar);
             this.Name = "Partida";
             this.Text = "Partida";
             ((System.ComponentModel.ISupportInitialize)(this.dataTablero)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btValidar;
-        private System.Windows.Forms.Button btTerminar;
         private System.Windows.Forms.Button btSalir;
         private System.Windows.Forms.Button btEstadistica;
         private System.Windows.Forms.DataGridView dataTablero;
         private System.Windows.Forms.Button btIniciar;
+        public System.Windows.Forms.Label lbUsuario;
+        public System.Windows.Forms.Label lbNivel;
+        private System.Windows.Forms.Label lbPuntaje;
     }
 }

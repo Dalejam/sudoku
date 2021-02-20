@@ -48,9 +48,9 @@ namespace sudoku01
                     {
                         MessageBox.Show("Usuario Valido");
                         Partida abrir = new Partida();
-                        
+                        abrir.lbUsuario.Text = datos[1].ToString();
                         abrir.Show();
-                        iniciarPartida.llenarTablero(nivel.ToString());
+                        //iniciarPartida.llenarTablero(nivel.ToString());
 
                     }
                     else
@@ -153,7 +153,10 @@ namespace sudoku01
             
         }
 
-        
+        private void textClave_TextChanged(object sender, EventArgs e)
+        {
+            textClave.PasswordChar = '*';
+        }
     }
 }
     

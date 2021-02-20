@@ -66,6 +66,7 @@ namespace sudoku01
             this.textClave.Name = "textClave";
             this.textClave.Size = new System.Drawing.Size(126, 20);
             this.textClave.TabIndex = 2;
+            this.textClave.TextChanged += new System.EventHandler(this.textClave_TextChanged);
             // 
             // usuarioLb
             // 

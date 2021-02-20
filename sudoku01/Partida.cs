@@ -21,10 +21,57 @@ namespace sudoku01
         string[,] tablero;
         private void btIniciar_Click(object sender, EventArgs e)
         {
+            llenarTablero();
+            if (this.dataTablero.SelectedRows.Count>1)
+            {
+                validacionCelda();
+
+            }
+
+        }
+        private void btValidar_Click(object sender, EventArgs e)
+        {
+            //int confirmar = Convert.ToInt32( MessageBox.Show("Desea validar y terminar ", "VALIDACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question));
+            bool color=false;
+            string tono = "verde";
+            //if(confirmar==1)
+           // {
+                validacionTablero();
+                while (tono == "verde" && color == false)
+                {
+
+                    for (int f = 0; f < 9; f++)
+                    {
+                        for (int c = 0; c < 9; c++)
+                        {
+                            if (dataTablero.Rows[f].Cells[c].Style.BackColor == Color.Coral)
+                            {
+                                color = true;
+                                tono = "Rojo";
+                                lbPuntaje.Text = "0";
+                                break;
+                            }
+                        }
+                    }
+                }
+                if(tono=="verde")
+                {
+                    lbPuntaje.Text = "500";
+                }
+                guardarResultado();
+                
+           // }
+
+
+
+        }
+
+        public void llenarTablero()
+        {
             tablero = new string[9, 9];
             dataTablero.ColumnCount = 9;
             dataTablero.RowCount = 9;
-           
+
             string validacion = "datos.txt";
             StreamReader leer = File.OpenText(validacion);
             while (!leer.EndOfStream)
@@ -34,15 +81,15 @@ namespace sudoku01
                 string[] linea = File.ReadAllLines(validacion);
                 int calin = linea.Length;
                 int posicion = 0;
-                int espacio=0;
+                int espacio = 0;
                 while (posicion < 81)
                 {
                     for (int fila = 0; fila < 9; fila++)
                     {
                         for (int columna = 0; columna < 9; columna++)
                         {
-                            
-                            if (espacio>=5)
+
+                            if (espacio >= 5)
                             {
                                 tablero[fila, columna] = datos[posicion];
                                 dataTablero.Rows[fila].Cells[columna].Value = tablero[fila, columna];
@@ -57,7 +104,7 @@ namespace sudoku01
                                 espacio++;
 
                             }
-                            
+
                         }
                     }
                 }
@@ -66,29 +113,89 @@ namespace sudoku01
             }
             leer.Close();
 
-            
+
 
 
         }
-
-        private void btSalir_Click(object sender, EventArgs e)
+        public void validacionTablero()
         {
-            this.Close();
-        }
+            dataTablero.ColumnCount = 9;
+            dataTablero.RowCount = 9;
+            string validacionJuego = "datos.txt";
+            StreamReader leer = File.OpenText(validacionJuego);
+            while (!leer.EndOfStream)
+            {
+                string Lactual = leer.ReadLine();
+                string[] datos = Lactual.Split(',');
+                string[] linea = File.ReadAllLines(validacionJuego);
+                int calin = linea.Length;
+                int posicion = 0;
+                string celda;
+                while (posicion < 81)
+                {
+                    for (int fila = 0; fila < 9; fila++)
+                    {
+                        for (int columna = 0; columna < 9; columna++)
+                        {
+                            celda = tablero[fila, columna];
+                            if (celda == datos[posicion])
+                            {
+                                this.dataTablero.Rows[fila].Cells[columna].Style.BackColor = Color.Green;
+                            }
+                            else
+                            {
+                                this.dataTablero.Rows[fila].Cells[columna].Style.BackColor = Color.Coral;
+                            }
+                            posicion++;
 
-        private void btValidar_Click(object sender, EventArgs e)
+                        }
+                    }
+                }
+
+            }
+
+        }
+        public void validacionCelda()
         {
             string numeroIngresado = this.dataTablero.CurrentCell.Value.ToString();
             int fila, columna;
-            fila =Convert.ToInt32(dataTablero.CurrentCellAddress.Y );
+            bool validacionFila, validacionColumna;
+            fila = Convert.ToInt32(dataTablero.CurrentCellAddress.Y);
             columna = dataTablero.CurrentCellAddress.X;
             string infFila, infColumna;
             char[] vectorFila = new char[9];
             char[] vectorColumna = new char[9];
             infFila = valoresFila(columna);
             infColumna = valoresColumna(columna);
+            validacionColumna = infColumna.Contains(numeroIngresado);
+            validacionFila = infFila.Contains(numeroIngresado);
+            while (validacionFila == true || validacionColumna == true)
+            {
+                dataTablero.Rows[fila].Cells[columna].Style.BackColor = Color.IndianRed;
+            }
+
+        }
+
+        public void vaciarTablero()
+        {
+            dataTablero.Rows.Clear();
             
         }
+
+        public void guardarResultado()
+        {
+            string Linea = "estadisticas.txt";
+            StreamWriter Ingresar = File.AppendText(Linea);
+            Ingresar.WriteLine("{0},{1},{2}", lbUsuario,lbNivel, lbPuntaje);
+            MessageBox.Show("OK");
+            Ingresar.Close();
+        }
+        private void btSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        
 
         private string valoresFila(int numeroFila)
         {
@@ -123,31 +230,33 @@ namespace sudoku01
             Estadistica abrir = new Estadistica();
             abrir.Show();
 
-            tablero = new string[9, 9];
-            abrir.dataEstadistica.ColumnCount = 9;
-            abrir.dataEstadistica.RowCount = 9;
+            tablero = new string[10, 4];
+            abrir.dataEstadistica.ColumnCount = 4;
+            abrir.dataEstadistica.RowCount = 10;
 
-            string validacion = "datos.txt";
+            string validacion = "usuarios.txt";
             StreamReader leer = File.OpenText(validacion);
             string Lactual = leer.ReadLine();
             string[] datos = Lactual.Split(',');
             string[] linea = File.ReadAllLines(validacion);
             int calin = linea.Length;
-            int posicion = 0;
-            int espacio = 0;
-            while (posicion < 81)
+            int casilla = 0;
+            while (lbUsuario.Text == datos[1]&&casilla<4)
             {
-                for (int fila = 0; fila < 9; fila++)
+
+                for (int fila = 0; fila < calin; fila++)
                 {
-                    for (int columna = 0; columna < 9; columna++)
+                    for (int columna = 0; columna < calin; columna++)
                     {
 
-                        tablero[fila, columna] = datos[posicion];
+                        tablero[fila, columna] = datos[casilla];
                         abrir.dataEstadistica.Rows[fila].Cells[columna].Value = tablero[fila, columna];
-                        posicion++;
+                        casilla++;
+
 
                     }
                 }
+
             }
 
 

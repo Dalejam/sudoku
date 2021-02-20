@@ -31,38 +31,34 @@ namespace sudoku01
         }
         private void btValidar_Click(object sender, EventArgs e)
         {
-            //int confirmar = Convert.ToInt32( MessageBox.Show("Desea validar y terminar ", "VALIDACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question));
             bool color=false;
             string tono = "verde";
-            //if(confirmar==1)
-           // {
-                validacionTablero();
-                while (tono == "verde" && color == false)
+            validacionTablero();
+            while (tono == "verde" && color == false)
+            {
+                for (int f = 0; f < 9; f++)
                 {
-
-                    for (int f = 0; f < 9; f++)
+                    for (int c = 0; c < 9; c++)
                     {
-                        for (int c = 0; c < 9; c++)
+                        if (dataTablero.Rows[f].Cells[c].Style.BackColor == Color.Coral)
                         {
-                            if (dataTablero.Rows[f].Cells[c].Style.BackColor == Color.Coral)
-                            {
-                                color = true;
-                                tono = "Rojo";
-                                lbPuntaje.Text = "0";
-                                break;
-                            }
+                            color = true;
+                            tono = "Rojo";
+                            lbPuntaje.Text = "0";
+                            c = 9;
+                            f = 9;
+
                         }
+
                     }
-                }
-                if(tono=="verde")
-                {
-                    lbPuntaje.Text = "500";
-                }
-                guardarResultado();
-                
-           // }
 
-
+                }
+            }
+            if (tono == "verde")
+            {
+                lbPuntaje.Text = "500";
+            }
+            guardarResultado();
 
         }
 

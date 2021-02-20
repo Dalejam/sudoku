@@ -1,1 +1,2 @@
 
+System.Windows.Forms.Label, Text: dalis101,System.Windows.Forms.Label, Text: labelNivel,System.Windows.Forms.Label, Text: 0

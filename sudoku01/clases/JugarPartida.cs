@@ -56,29 +56,7 @@ namespace sudoku01.clases
             }
         }
 
-        public bool compararDato(string valorDato, string fila, string columna)
-        {
-            bool datoCorrecto;
-            string[] vectorF = new string[8];
-            string[] vectorC = new string[8];
-            for(int i = 0; i<= 8; i++)
-            {
-                vectorC[i] = columna[i].ToString();
-            }
-            for(int j = 0; j <= 8; j++)
-            {
-                vectorF[j] = fila[j].ToString();
-            }
-            if (vectorF.Contains(valorDato)&&vectorC.Contains(valorDato))
-            {
-                datoCorrecto = false;
-            }
-            else
-            {
-                datoCorrecto = true;
-            }
-            return datoCorrecto;
-        }
+        
 
     }
 }

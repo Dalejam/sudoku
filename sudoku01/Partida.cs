@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sudoku01.clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,20 +14,20 @@ namespace sudoku01
 {
     public partial class Partida : Form
     {
+        Usuario Nusuario = new Usuario();
         public Partida()
         {
             InitializeComponent();
+            llenarTablero();
+            
         }
 
         string[,] tablero;
         private void btIniciar_Click(object sender, EventArgs e)
         {
             llenarTablero();
-            if (this.dataTablero.SelectedRows.Count>1)
-            {
-                validacionCelda();
 
-            }
+            
 
         }
         private void btValidar_Click(object sender, EventArgs e)
@@ -58,7 +59,9 @@ namespace sudoku01
             {
                 lbPuntaje.Text = "500";
             }
-            guardarResultado();
+           
+            Nusuario.guardarPuntaje(lbUsuario.Text,lbNivel.Text,lbPuntaje.Text);
+            vaciarTablero();
 
         }
 
@@ -155,21 +158,46 @@ namespace sudoku01
         {
             string numeroIngresado = this.dataTablero.CurrentCell.Value.ToString();
             int fila, columna;
-            bool validacionFila, validacionColumna;
+            bool validacionFila, validacionColumna,validacionC;
             fila = Convert.ToInt32(dataTablero.CurrentCellAddress.Y);
             columna = dataTablero.CurrentCellAddress.X;
             string infFila, infColumna;
             char[] vectorFila = new char[9];
             char[] vectorColumna = new char[9];
-            infFila = valoresFila(columna);
+            infFila = valoresFila(fila);
             infColumna = valoresColumna(columna);
             validacionColumna = infColumna.Contains(numeroIngresado);
             validacionFila = infFila.Contains(numeroIngresado);
-            while (validacionFila == true || validacionColumna == true)
+            validacionC = validacionCuadrante(fila,columna);
+            while (validacionFila == true || validacionColumna == true||validacionC)
             {
                 dataTablero.Rows[fila].Cells[columna].Style.BackColor = Color.IndianRed;
             }
 
+
+        }
+
+        public bool validacionCuadrante(int fila, int columna)
+        {
+            string posicionDato = this.dataTablero.CurrentCell.Value.ToString();
+            string cuadrante="";
+            bool validaCuadrante;
+            
+            if(posicionDato=="1" || posicionDato == "2"|| posicionDato == "3"
+                || posicionDato == "10"|| posicionDato == "11"|| posicionDato == "12"
+                || posicionDato == "19"|| posicionDato == "20"|| posicionDato == "21")
+            {
+                for(int f = 0; f <= 2; f++)
+                {
+                    for(int c = 0; f <= 2; c++)
+                    {
+                        cuadrante = cuadrante + tablero[f, c].ToString();
+                    }
+                }
+
+            }
+            validaCuadrante = cuadrante.Contains(posicionDato);
+            return validaCuadrante;
         }
 
         public void vaciarTablero()
@@ -178,14 +206,7 @@ namespace sudoku01
             
         }
 
-        public void guardarResultado()
-        {
-            string Linea = "estadisticas.txt";
-            StreamWriter Ingresar = File.AppendText(Linea);
-            Ingresar.WriteLine("{0},{1},{2}", lbUsuario,lbNivel, lbPuntaje);
-            MessageBox.Show("OK");
-            Ingresar.Close();
-        }
+        
         private void btSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -230,14 +251,14 @@ namespace sudoku01
             abrir.dataEstadistica.ColumnCount = 4;
             abrir.dataEstadistica.RowCount = 10;
 
-            string validacion = "usuarios.txt";
+            string validacion = "estadisticas.txt";
             StreamReader leer = File.OpenText(validacion);
             string Lactual = leer.ReadLine();
             string[] datos = Lactual.Split(',');
             string[] linea = File.ReadAllLines(validacion);
             int calin = linea.Length;
             int casilla = 0;
-            while (lbUsuario.Text == datos[1]&&casilla<4)
+            while (lbUsuario.Text == datos[1]&&casilla<=4)
             {
 
                 for (int fila = 0; fila < calin; fila++)

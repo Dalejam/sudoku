@@ -16,5 +16,10 @@ namespace sudoku01
         {
             InitializeComponent();
         }
+
+        private void dataEstadistica_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
     }
 }

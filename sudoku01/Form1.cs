@@ -49,6 +49,7 @@ namespace sudoku01
                         MessageBox.Show("Usuario Valido");
                         Partida abrir = new Partida();
                         abrir.lbUsuario.Text = datos[1].ToString();
+                        abrir.lbNivel.Text = nivel.ToString();
                         abrir.Show();
                         //iniciarPartida.llenarTablero(nivel.ToString());
 
